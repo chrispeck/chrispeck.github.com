@@ -1,161 +1,78 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<meta charset="utf-8">
+<head>
+<meta charset="utf-8">
 
-		<title>CSS Layout</title>
+<title>CSS Layout</title>
 
-		<style type="text/css" media="screen">
-			/**
+<link rel="stylesheet" href="stylesheets/styles.css" />
 
-			selector {
-				property:value;
-			}
-			*/
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
 
-			html {
-				background: black;
-			}
+<script src="javascripts/main.js"></script>
 
-			* {
-				border-radius: 20px;
-				padding: 5px;
-				margin: 5px;
-				color: black;
-				background: black;
-				font-family: sans-serif;
-			}
+<script type="text/javascript">
 
-			body {
-				width: 700px;
-				margin: 50px auto; /* first number applies to top and bottom, second is for left and right */
-				background: black;
-				padding: 20px;
-			}
+$(document).ready(function() {
+  //$('#bio').hide();
+  $('#portfolio').hide();
+  $('#calendar').hide();
 
-			#primary {
-				width: 70%;
-				float: right;
-				font-size: 20px;
-			}
+  $('#bio_link').click(function() {
+    $('#bio').show();
+    $('#portfolio').hide();
+    $('#calendar').hide();
+  });
 
-			#secondary {
-				width: 20%;
-				float: left;
-				font-size: 14px;
-			}
+  $('#portforlio_link').click(function() {
+    $('#bio').hide();
+    $('#portfolio').show();
+    $('#calendar').hide();
+  });
 
-			footer {
-				display:block; /* some (older) browsers won't automatically display footer as block-level element */
-				clear:both; /* both left and right */
-			}
-
-			header {
-				padding: 5px;
-			}
-
-			.hidden { 
-				display: none;
-				color: red;
-			}
-			.unhidden { 
-				display: block;
-			}
-
-
-		</style>
-		<script type="text/javascript">
-			function getRandomColor() {
-				var letters = '0123456789ABCDEF'.split('');
-				var color = '#';
-				for (var i = 0; i < 6; i++ ) {
-					color += letters[Math.round(Math.random() * 15)];
-				}
-				return color;
-			}
-
-function getComplementaryColor(color) {
-	var complement='#'; 
-	var ch=''; 
-	var list1='0123456789ABCDEF'; 
-	var list2='FEDCBA9876543210';
-	for(var i=0;i<color.length;i++) { 
-		ch=color.charAt(i); 
-		for(var n=0;n<list1.length;n++) { 
-			if(ch==list1.charAt(n)) complement+= list2.charAt(n); 
-		} 
-	}
-	//alert(color + " -  " + complement);
-	return complement;
-}
-
-function colorFun()
-{
-	setInterval(function(){randomizeAllColors()},5000);
-}
-
-function randomizeAllColors() {
-	var elems=document.getElementsByTagName('*'), i;
-
-	for (i in elems)
-	{
-		var color = getRandomColor();
-		var complement = getComplementaryColor(color);
-		elems[i].style.background = color;
-		elems[i].style.color = complement;
-	}
-}
-
-function unhide(divID) {
-	var showItem = document.getElementById(divID);
-	var elems=document.getElementsByTagName('*'), i;
-
-	for (i in elems)
-	{
-		if (elems[i].className=='unhidden') { elems[i].className='hidden'; }
-	}
-
-	showItem.className='unhidden';
-}
+  $('#calendar_link').click(function() {
+    $('#bio').hide();
+    $('#portfolio').hide();
+    $('#calendar').show();
+  });
+});
 
 </script>
 
-	</head>
-	<body onload="colorFun();">
-		<header role="banner">
-		<h1>Chris Peck</h1> 
-		<a href="javascript:unhide('bio');">Bio</a> 
-		<a href="javascript:unhide('portfolio');">Portfolio</a>
-		<a href="javascript:unhide('calendar');">Calendar</a>
-		</header>
+</head>
+<body>
+<header role="banner">
+  <h1>Chris Peck</h1> 
+  <a id="bio_link" href="#bio" href="javascript:unhide('bio');">Bio</a> 
+  <a id="portforlio_link" href="#portfolio" href="javascript:unhide('portfolio');">Portfolio</a>
+  <a id="calendar_link" href="#calendar" href="javascript:unhide('calendar');">Calendar</a>
+</header>
 
-		<div id="primary">
-			<p id="bio" class="unhidden">
-			In the early 2000's Peck collaborated on several pieces with David Dorfman Dance, toured extensively with John Jasperse Company performing his live electronic score for justtwodancers, and served as a faculty member at the American Dance Festival. Since then Peck's dance collaborations have included pieces with Eleanor Bauer, Milka Djordjevich, Dance Forum Taipei, and RoseAnne Spradlin. The Brooklyn Adult Recorder choir, which Peck organized with in 2005 with choreographer Beth Gill, is notorious in some circles for its minimalist durational performances. In 2011, Peck collaborated with percussionist Doug Perkins on ‚Äú...how time passes...‚Äù, a day-long piece for marching ensemble traversing the entire 13-mile length of Broadway in Manhattan, for the winter festival of Make Music New York. The piece was designed to be experienced via a 3-minute 120x timelapse video that can now be viewed on youTube. Peck performs as an improviser with Listening Music for the Age of Crystal Moon Cone along with Jon Moniaci and Stephen Rush. The trio has been joined in concert by legendary composer/accordionist Pauline Oliveros, and recently recorded in a room adjacent to the room housing George Winston's piano. Peck has received numerous grants to support his work from institutions such as the American Music Center and the MAP Fund. He is currently on a multi-year fellowship at the University of Virginia, where he is pursuing a PhD in Composition and Computer Technologies. He is also a fellow in the Praxis program at U.Va.'s Scholars' Lab, a major center for research in digital humanities.
-			</p> 
-			<p id="portfolio" class="hidden">
-			<iframe width="420" height="315" src="http://www.youtube.com/embed/tiNHMXnJX-0" frameborder="0" allowfullscreen></iframe>
-			<iframe width="420" height="315" src="http://www.youtube.com/embed/Vs8trCA5kUE" frameborder="0" allowfullscreen></iframe>
-			<iframe width="420" height="315" src="http://www.youtube.com/embed/hxkHbTxLSD8" frameborder="0" allowfullscreen></iframe>
-			<iframe width="420" height="315" src="http://www.youtube.com/embed/7YQF2nhTbN0" frameborder="0" allowfullscreen></iframe>
+<div id="primary">
+  <p id="bio">
+  In the early 2000's Peck collaborated on several pieces with David Dorfman Dance, toured extensively with John Jasperse Company performing his live electronic score for justtwodancers, and served as a faculty member at the American Dance Festival. Since then Peck's dance collaborations have included pieces with Eleanor Bauer, Milka Djordjevich, Dance Forum Taipei, and RoseAnne Spradlin. The Brooklyn Adult Recorder choir, which Peck organized with in 2005 with choreographer Beth Gill, is notorious in some circles for its minimalist durational performances. In 2011, Peck collaborated with percussionist Doug Perkins on ‚Äú...how time passes...‚Äù, a day-long piece for marching ensemble traversing the entire 13-mile length of Broadway in Manhattan, for the winter festival of Make Music New York. The piece was designed to be experienced via a 3-minute 120x timelapse video that can now be viewed on youTube. Peck performs as an improviser with Listening Music for the Age of Crystal Moon Cone along with Jon Moniaci and Stephen Rush. The trio has been joined in concert by legendary composer/accordionist Pauline Oliveros, and recently recorded in a room adjacent to the room housing George Winston's piano. Peck has received numerous grants to support his work from institutions such as the American Music Center and the MAP Fund. He is currently on a multi-year fellowship at the University of Virginia, where he is pursuing a PhD in Composition and Computer Technologies. He is also a fellow in the Praxis program at U.Va.'s Scholars' Lab, a major center for research in digital humanities.
+  </p> 
+  <p id="portfolio" class="hidden">
+  <iframe width="420" height="315" src="http://www.youtube.com/embed/tiNHMXnJX-0" frameborder="0" allowfullscreen></iframe>
+  <iframe width="420" height="315" src="http://www.youtube.com/embed/Vs8trCA5kUE" frameborder="0" allowfullscreen></iframe>
+  <iframe width="420" height="315" src="http://www.youtube.com/embed/hxkHbTxLSD8" frameborder="0" allowfullscreen></iframe>
+  <iframe width="420" height="315" src="http://www.youtube.com/embed/7YQF2nhTbN0" frameborder="0" allowfullscreen></iframe>
+  </p>
+  <p id="calendar">
+  <iframe src="https://www.google.com/calendar/embed?showTitle=0&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23000000&amp;src=hpk0srtgvg4j7eg6j0intba0h8%40group.calendar.google.com&amp;color=%232F6309&amp;ctz=America%2FNew_York" style=" border-width:0 " width="400" height="600" frameborder="0" scrolling="no"></iframe>
+  </p>
+</div>
 
-			</p>
-			<p id="calendar" class="hidden">
-			<iframe src="https://www.google.com/calendar/embed?showTitle=0&amp;showNav=0&amp;showDate=0&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=0&amp;mode=AGENDA&amp;height=600&amp;wkst=1&amp;bgcolor=%23000000&amp;src=hpk0srtgvg4j7eg6j0intba0h8%40group.calendar.google.com&amp;color=%232F6309&amp;ctz=America%2FNew_York" style=" border-width:0 " width="400" height="600" frameborder="0" scrolling="no"></iframe>
-			</p>
-		</div>
+<div id="secondary">
+  <img src="http://www.gravatar.com/avatar/6b8280b7daed716fa16a6c7a040637d0"\>
+  <p>
+  Chris Peck is an American composer/performer whose work has been presented extensively around the US and internationally. His works involving collaboration with contemporary dance, audience participation, various mixtures of ‚Äútrained‚Äù and ‚Äúuntrained‚Äù performers, site specificity, innovative approaches to technology, and various forms of category-defying experimentalism, have been performed at the Venice Biennale, Performa, ImPulsTanz, Improvised and Otherwise, the Whitney Museum, and The Kitchen, and reviewed in publications such as The New York Times and Signal to Noise.
+  </p>
+</div>
 
-		<div id="secondary">
-			<img src="http://www.gravatar.com/avatar/6b8280b7daed716fa16a6c7a040637d0"\>
-			<p>
+<footer role="contentinfo">
+  <p>COPYLEFT 2012</p>
 
-			Chris Peck is an American composer/performer whose work has been presented extensively around the US and internationally. His works involving collaboration with contemporary dance, audience participation, various mixtures of ‚Äútrained‚Äù and ‚Äúuntrained‚Äù performers, site specificity, innovative approaches to technology, and various forms of category-defying experimentalism, have been performed at the Venice Biennale, Performa, ImPulsTanz, Improvised and Otherwise, the Whitney Museum, and The Kitchen, and reviewed in publications such as The New York Times and Signal to Noise.
-			</p>
-		</div>
-
-		<footer role="contentinfo">
-		<p>COPYLEFT 2012</p>
-
-		</footer>
-	</body>
+</footer>
+</body>
 </html>

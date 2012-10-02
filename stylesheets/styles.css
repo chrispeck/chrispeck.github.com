@@ -38,4 +38,58 @@
 	}
 
 
+html {
+  background: black;
+}
+
+* {
+  border-radius: 20px;
+  padding: 5px;
+  margin: 5px;
+  /*color: black;*/
+  background: black;
+  font-family: sans-serif;
+}
+
+body {
+  width: 700px;
+  margin: 50px auto; /* first number applies to top and bottom, second is for left and right */
+  background: black;
+  padding: 20px;
+}
+
+#primary {
+  width: 70%;
+  float: right;
+  font-size: 20px;
+}
+
+#secondary {
+  width: 20%;
+  float: left;
+  font-size: 14px;
+}
+
+footer {
+  background:green;
+  display:block; /* some (older) browsers won't automatically display footer as block-level element */
+  clear:both; /* both left and right */
+}
+
+header {
+  padding: 5px;
+  background: green;
+}
+
+header a {
+  background: green;
+}
+
+.hidden { 
+  display: none;
+  color: red;
+}
+.unhidden { 
+  display: block;
+}
 
